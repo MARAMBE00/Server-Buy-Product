@@ -5,7 +5,7 @@ echo "<title>" . $pagename . "</title>";
 
 echo "<body>";
 
-include "headfile.html"; 
+include ("headfile.html"); 
 
 echo "<h4>" . $pagename . "</h4>"; 
 
@@ -37,3 +37,4 @@ echo "</form>";
 include "footfile.html"; //include head layout
 
 echo "</body>";
+?>

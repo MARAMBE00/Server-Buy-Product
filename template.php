@@ -6,7 +6,7 @@ echo "<title>" . $pagename . "</title>"; //display name of the page as window ti
 
 echo "<body>";
 
-include "headfile.html"; //include header layout file
+include ("headfile.html"); //include header layout file
 
 echo "<h4>" . $pagename . "</h4>"; //display name of the page on the web page
 
@@ -23,3 +23,4 @@ echo "<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmo
 include "footfile.html"; //include head layout
 
 echo "</body>";
+?>

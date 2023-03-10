@@ -6,7 +6,7 @@ echo "<link rel=stylesheet type=text/css href=mystylesheet.css>";
 echo "<title>" . $pagename . "</title>"; 
 
 echo "<body>";
-include "headfile.html"; 
+include ("headfile.html"); 
 echo "<h4>" . $pagename . "</h4>";
 
 //retrieve the product id passed from previous page using the GET method and the $_GET superglobal variable applied to the query
@@ -61,3 +61,5 @@ echo "</p>";
 include "footfile.html";
 
 echo "</body>";
+
+?>

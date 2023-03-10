@@ -6,7 +6,7 @@ echo "<link rel=stylesheet type=text/css href=mystylesheet.css>";
 echo "<title>" . $pagename . "</title>"; 
 
 echo "<body>";
-include "headfile.html"; 
+include ("headfile.html"); 
 echo "<h4>" . $pagename . "</h4>"; 
 
 //create a $SQL variable and populate it with a SQL statement that retrieves product details
@@ -36,3 +36,4 @@ while ($arrayp = mysqli_fetch_array($exeSQL)) {
 echo "</table>";
 include "footfile.html"; 
 echo "</body>";
+?>

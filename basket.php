@@ -9,15 +9,18 @@ echo "<title>" . $pagename . "</title>";
 
 echo "<body>";
 
-include "headfile.html";
+include ("headfile.html");
 
 echo "<h4>" . $pagename . "</h4>"; 
 
 if (isset($_POST['del_prodid'])) {
     $delprodid = $_POST['del_prodid'];
     unset ($_SESSION['basket'][$delprodid]);
+    //header("Refresh:0");
     echo "<p><b>1 item removed from the basket</b>";
 }
+
+$total = 0;
 
 if (isset($_POST['h_proid'])) {
     $newprodid = $_POST['h_proid'];
@@ -27,22 +30,18 @@ if (isset($_POST['h_proid'])) {
     // echo "<p>Quantity of selected product: ".$reququantity;
 
     $_SESSION['basket'][$newprodid] = $reququantity;
-    //$_SESSION['basket2'][$newprodid] = $reququantity;
     echo "<p><b>1 item added to the basket</b>";
 } else {
     //echo "<p><b>Basket unchanged</b>";
 }
-
-$total = 0;
-
-echo "<table id='baskettable'>";
-echo "<tr>";
-echo "<th>Product name</th> 
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Subtotal</th>
-      <th>Remove Product</th>";
-echo "</tr>";
+echo "<table id='baskettable'>
+<tr>
+    <th>Product Name</th> 
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+    <th>Remove Product</th>
+</tr>";
 
 if (isset($_SESSION['basket'])) {
     foreach ($_SESSION['basket'] as $index => $value) {
@@ -63,7 +62,7 @@ if (isset($_SESSION['basket'])) {
         echo "<td>";
         echo "<input type=submit value='Remove' id='submitbtn'>";
         echo "</td>";
-        echo "<input type=hidden name=del_prodid value=".$prodinbasketarray['prodId'].">";
+        echo "<input type=hidden name=del_prodid value=".$arrayp['prodId'].">";
         echo "</form>";
         echo "</tr>";    
         
@@ -86,3 +85,4 @@ echo "<br><p>Returning homteq customers: <a href='login.php'>Log In</a></p>";
 include "footfile.html"; 
 
 echo "</body>";
+?>
