@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ("db.php"); //include db.php file to connect to DB
 
 $pagename = "make your home smart"; 
@@ -7,6 +8,7 @@ echo "<title>" . $pagename . "</title>";
 
 echo "<body>";
 include ("headfile.html"); 
+include ("detectlogin.php");
 echo "<h4>" . $pagename . "</h4>"; 
 
 //create a $SQL variable and populate it with a SQL statement that retrieves product details

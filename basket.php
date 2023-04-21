@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 include("db.php");
 
 $pagename = "smart basket"; 
@@ -10,6 +9,7 @@ echo "<title>" . $pagename . "</title>";
 echo "<body>";
 
 include ("headfile.html");
+include ("detectlogin.php");
 
 echo "<h4>" . $pagename . "</h4>"; 
 
@@ -79,8 +79,12 @@ echo "</tr>";
 echo "</table>";
 
 echo "<br><p><a href='clearbasket.php'>CLEAR BASKET</a></p>";
-echo "<br><p>New homteq customers: <a href='signup.php'>Sign up</a></p>";
-echo "<br><p>Returning homteq customers: <a href='login.php'>Log In</a></p>";
+if (isset($_SESSION['userid'])){
+    echo "<br><p>To finalize your order: <a href='checkout.php'>Checkout</a></p>";
+}else{
+    echo "<br><p>New homteq customers: <a href='signup.php'>Sign up</a></p>";
+    echo "<br><p>Returning homteq customers: <a href='login.php'>Log In</a></p>";
+}
 
 include "footfile.html"; 
 

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include("db.php");
 
@@ -10,6 +9,7 @@ echo "<title>" . $pagename . "</title>";
 echo "<body>";
 
 include ("headfile.html"); 
+include ("detectlogin.php");
 
 echo "<h4>" . $pagename . "</h4>";
 unset($_SESSION['basket']);

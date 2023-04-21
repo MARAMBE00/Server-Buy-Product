@@ -23,16 +23,29 @@
                     </div>
                     <div id="navigation">
                         <ul>
-                            <div>
-                                <li><a href='index.php'>Home Tech</a></li>
-                                <li><a href='aboutus.php'>About Us</a></li>
-                                <li><a href='signup.php'>Sign Up</a></li>
-                                <li><a href='login.php'>Login</a></li>
-                            </div>;
-                            <div>
-                                <li><a href='basket.php'>Smart Basket</a></li>
-                                <li><a href='login.php'>Staff Login</a></li>
-                            </div>
+                            <?php
+                            if (!isset($_SESSION['userid'])) { // check if user is not logged in
+                                echo '<div>';
+                                    echo '<li><a href="index.php">Home Tech</a></li>';
+                                    echo '<li><a href="aboutus.php">About Us</a></li>'; 
+                                    echo '<li><a href="signup.php">Sign Up</a></li>'; 
+                                    echo '<li><a href="login.php">Login</a></li>';
+                                echo '</div>';
+                                echo '<div>';
+                                    echo '<li style="float: right;"><a href="basket.php">Smart Basket</a></li>'; 
+                                    echo '<li style="float: right;"><a href="login.php">Staff Login</a></li>'; 
+                                echo '</div>';
+                              } else {
+                                echo '<div>';
+                                    echo '<li><a href="index.php">Home Tech</a></li>'; 
+                                    echo '<li><a href="aboutus.php">About Us</a></li>'; 
+                                    echo '<li><a href="logout.php">Logout</a></li>'; 
+                                echo '</div>';
+                                    echo '<div>';
+                                    echo '<li style="float: right;"><a href="basket.php">Smart Basket</a></li>'; 
+                                echo '</div>';
+                              }
+                            ?>
                         </ul>
                     </div>
                 </div>

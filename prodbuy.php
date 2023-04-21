@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ("db.php");
 
 $pagename = "a smart buy for a smart home"; 
@@ -7,6 +8,7 @@ echo "<title>" . $pagename . "</title>";
 
 echo "<body>";
 include ("headfile.html"); 
+include ("detectlogin.php");
 echo "<h4>" . $pagename . "</h4>";
 
 //retrieve the product id passed from previous page using the GET method and the $_GET superglobal variable applied to the query

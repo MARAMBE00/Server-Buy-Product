@@ -40,7 +40,7 @@ if (!empty($fname) and !empty($lname) and !empty($address) and !empty($postcode)
                 //if the email does not match the regular expression
                 if (preg_match($reg, $email)) {
                         $SQL = "insert into Users (userType, userFName, userSName, userAddress, userPostCode, userTelNo, userEmail, userPassword)
-                        values ('A', '".$fname."', '".$lname."', '".$address."', '".$postcode."', '".$telno."', '".$email."', '".$password."')";
+                        values ('C', '".$fname."', '".$lname."', '".$address."', '".$postcode."', '".$telno."', '".$email."', '".$password."')";
 
                         //if SQL execution is correct
                         if (mysqli_query($conn, $SQL)){
