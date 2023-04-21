@@ -10,19 +10,6 @@ CREATE TABLE Product(
         CONSTRAINT          p_pid_pk        PRIMARY KEY(prodId)
 );
 
-CREATE TABLE Users(
-        userId          INT             AUTO_INCREMENT,      
-        userType        VARCHAR(1)      NOT NULL,
-        userFName       VARCHAR(100)    NOT NULL,
-        userSName       VARCHAR(100)    NOT NULL,
-        userAddress     VARCHAR(200)    NOT NULL,
-        userPostCode    VARCHAR(20)     NOT NULL,
-        userTelNo       VARCHAR(20)     NOT NULL,
-        userEmail       VARCHAR(100)    NOT NULL UNIQUE,
-        userPassword    VARCHAR(100)    NOT NULL,
-        CONSTRAINT      u_uid_pk        PRIMARY KEY(userId)
-);
-
 INSERT INTO Product(prodName, prodPicNameSmall, prodPicNameLarge, prodDescripShort, prodDescripLong, prodPrice, prodQuantity)
 VALUES('Samsung Smart TV', 'TvS.png', 'TvB.jpeg', 
         'Samsung UE43AU7100 (2021) HDR 4K Ultra HD Smart TV, 43 inch with TVPlus, Black', 
@@ -58,3 +45,40 @@ VALUES('Apple MacBook Pro 2023', 'LaptopS.png', 'LaptopB.png',
         "Pro" doesn\'t even come close to grasping how much power this notebook puts in your hands.', 
         2699.00, 41);
 
+
+CREATE TABLE Users(
+        userId          INT             AUTO_INCREMENT,      
+        userType        VARCHAR(1)      NOT NULL,
+        userFName       VARCHAR(100)    NOT NULL,
+        userSName       VARCHAR(100)    NOT NULL,
+        userAddress     VARCHAR(200)    NOT NULL,
+        userPostCode    VARCHAR(20)     NOT NULL,
+        userTelNo       VARCHAR(20)     NOT NULL,
+        userEmail       VARCHAR(100)    NOT NULL UNIQUE,
+        userPassword    VARCHAR(100)    NOT NULL,
+        CONSTRAINT      u_uid_pk        PRIMARY KEY(userId)
+);
+
+
+CREATE TABLE Orders (
+        orderNo         INT             AUTO_INCREMENT,
+        userId          INT             NOT NULL,
+        orderDateTime   DATETIME        NOT NULL,
+        orderTotal      DECIMAL(8,2)    NOT NULL DEFAULT '0.00',
+        orderStatus     VARCHAR(50)     DEFAULT NULL,
+        shippingDate    DATE DEFAULT    NULL,
+        CONSTRAINT      o_ordno_pk      PRIMARY KEY (orderNo),
+        CONSTRAINT      o_uid_fk        FOREIGN KEY (userId) REFERENCES Users(userId) ON DELETE CASCADE
+) ;
+
+
+CREATE TABLE Order_Line (
+        oderLineId              INT             AUTO_INCREMENT,
+        orderNo                 INT             NOT NULL,
+        prodId                  INT             NOT NULL,
+        quantityOrdered         INT             NOT NULL,
+        subTotal                DECIMAL(8,2)    NOT NULL DEFAULT '0.00',
+        CONSTRAINT              ol_olno_pk      PRIMARY KEY (oderLineId),
+        CONSTRAINT              ol_ordno_fk     FOREIGN KEY (orderNo) REFERENCES Orders(orderNo) ON DELETE CASCADE,
+        CONSTRAINT              ol_prid_fk      FOREIGN KEY (prodId) REFERENCES Product(prodId) ON DELETE CASCADE
+) ;
